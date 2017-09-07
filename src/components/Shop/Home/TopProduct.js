@@ -6,7 +6,10 @@ import {
 const url = 'http://192.168.131.2/api/images/product/';
 
 export default class TopProduct extends Component {
-
+gotoDetail() {
+        const { navigation } = this.props;
+        navigation.navigate('Manhinh_ProductDetail');
+    }
 
     render() {
         const {
@@ -23,7 +26,7 @@ export default class TopProduct extends Component {
                     {this.props.topProducts.map(e => (
                         <TouchableOpacity 
                         style={productContainer} 
-                        onPress={this.props.onOpen}
+                        onPress={this.gotoDetail.bind(this)}
                         key={e.id}
                         >
                             <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />

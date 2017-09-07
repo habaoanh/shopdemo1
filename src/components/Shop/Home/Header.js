@@ -12,13 +12,16 @@ const { height } = Dimensions.get('window');
 
 //chua bam hinh de chuyen sang drawer duoc, giai phap: truyen navigate qua props : OK
 export default class Header extends Component {
-
+    openMenu() {
+        const { navigation } = this.props;
+        navigation.navigate('DrawerOpen');
+    }
     render() {
         const { wrapper, row1, textInput, iconStyle, titleStyle } = styles;
         return (
             <View style={wrapper}>
                 <View style={row1}>
-                    <TouchableOpacity onPress={this.props.onOpen}>
+                    <TouchableOpacity onPress={this.openMenu.bind(this)}>
                         <Image source={icMenu} style={iconStyle} />
                     </TouchableOpacity>
                     <Text style={titleStyle}>Wearing a Dress</Text>

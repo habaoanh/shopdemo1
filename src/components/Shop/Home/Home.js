@@ -23,30 +23,15 @@ class Home extends Component {
             this.setState({ types: type, topProducts: product });
         });
     }
-    
-    openMenu() {
-        const { navigate } = this.props.navigation;
-        navigate('DrawerOpen');
-    }
-
-    gotoDetail() {
-        const { navigate } = this.props.navigation;
-        navigate('Manhinh_ProductDetail');
-    }
-
-    gotoListProduct() {
-       const { navigate } = this.props.navigation;
-        navigate('Manhinh_ListProduct');
-    }
 
     render() {
         const { types, topProducts } = this.state;
         return (
              <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
-                 <Header onOpen={this.openMenu.bind(this)} />
+                 <Header navigation={this.props.navigation} />
                  <Collection />
-                 <Category onOpen={this.gotoListProduct.bind(this)} types={types} />
-                 <TopProduct onOpen={this.gotoDetail.bind(this)} topProducts={topProducts} />
+                 <Category navigation={this.props.navigation} types={types} />
+                 <TopProduct navigation={this.props.navigation} topProducts={topProducts} />
              </ScrollView>
              
         );

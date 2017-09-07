@@ -8,6 +8,10 @@ const { width } = Dimensions.get('window');
 const url = 'http://192.168.131.2/api/images/type/';
 
 export default class Category extends Component {
+    gotoListProduct() {
+       const { navigation } = this.props;
+        navigation.navigate('Manhinh_ListProduct');
+    }
 
     render() {
         const { types } = this.props;
@@ -20,7 +24,7 @@ export default class Category extends Component {
                 <View style={{ justifyContent: 'flex-end', flex: 4 }}>
                     <Swiper showsPagination showsButtons width={imageWidth} height={imageHeight} >
                         {types.map(e => (
-                            <TouchableOpacity onPress={this.props.onOpen} key={e.id}>
+                            <TouchableOpacity onPress={this.gotoListProduct.bind(this)} key={e.id}>
                                 <Image source={{ uri: `${url}${e.image}` }} style={imageStyle}>
                                     <Text style={cateTitle}>{e.name}</Text>
                                 </Image>
