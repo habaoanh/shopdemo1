@@ -7,6 +7,7 @@ const url = 'http://192.168.131.2/api/images/product/';
 
 export default class TopProduct extends Component {
 
+
     render() {
         const {
             container, titleContainer, title,
@@ -26,8 +27,8 @@ export default class TopProduct extends Component {
                         key={e.id}
                         >
                             <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />
-                            <Text style={produceName}>PRODUCT NAME</Text>
-                            <Text style={producePrice}>250$</Text>
+                            <Text style={produceName}>{e.name.toUpperCase()}</Text>
+                            <Text style={producePrice}>{e.price}$</Text>
                         </TouchableOpacity>
                     ))}
                 </View>
