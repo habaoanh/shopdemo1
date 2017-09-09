@@ -23,7 +23,7 @@ export default class Authentication extends Component {
 
     goBackToMain() {
         const { navigate } = this.props.navigation;
-        navigate.pop();
+        navigate.pop();///xem lai navigate quay lai
     }
     render() {
         const {
