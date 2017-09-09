@@ -11,16 +11,27 @@ export default class Menu extends Component {
         super(props);
         this.state = { isLogedIn: true };
     }
-
+    gotoAuthentication() {
+        const { navigate } = this.props.navigation;
+        navigate('Authentication');
+    }
+    gotoChangeInfo() {
+        const { navigate } = this.props.navigation;
+        navigate('Changeinfo');
+    }
+    gotoOrderHistory() {
+        const { navigate } = this.props.navigation;
+        navigate('OrderHistory');
+    }
     render() {
-        const { 
-            container, profile, btnStyle, btnText, 
+        const {
+            container, profile, btnStyle, btnText,
             btnSignInStyle, btnTextSignIn, loginContainer,
             username
         } = styles;
         const logoutJSX = (
             <View style={{ flex: 1 }}>
-                <TouchableOpacity style={btnStyle}>
+                <TouchableOpacity style={btnStyle} onPress={this.gotoAuthentication.bind(this)}>
                     <Text style={btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
@@ -29,10 +40,14 @@ export default class Menu extends Component {
             <View style={loginContainer}>
                 <Text style={username}>Nguyen Van Pho</Text>
                 <View>
-                    <TouchableOpacity style={btnSignInStyle}>
+                    <TouchableOpacity
+                        style={btnSignInStyle} onPress={this.gotoOrderHistory.bind(this)}
+                    >
                         <Text style={btnTextSignIn}>Order History</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={btnSignInStyle}>
+                    <TouchableOpacity
+                        style={btnSignInStyle} onPress={this.gotoChangeInfo.bind(this)}
+                    >
                         <Text style={btnTextSignIn}>Change Info</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={btnSignInStyle}>
@@ -46,9 +61,9 @@ export default class Menu extends Component {
         return (
             <View style={container}>
                 <Image source={profileIcon} style={profile} />
-                { mainJSX }
+                {mainJSX}
             </View>
-            
+
         );
     }
 }
@@ -94,13 +109,13 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     loginContainer: {
-        flex: 1, 
-        justifyContent: 'space-between', 
+        flex: 1,
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     username: {
-        color: '#fff', 
-        fontFamily: 'Avenir', 
+        color: '#fff',
+        fontFamily: 'Avenir',
         fontSize: 20
     }
 });
