@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-//import Collection from './Collection';
-//import Category from './Category';
+import Collection from './Collection';
+import Category from './Category';
 import TopProduct from './TopProduct';
 import Header from './Header';
 
@@ -17,6 +17,8 @@ class Home extends Component {
         return (
              <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
                  <Header onOpen={this.openMenu.bind(this)} />
+                 <Collection />
+                 <Category />
                  <TopProduct />
              </ScrollView>
         );
