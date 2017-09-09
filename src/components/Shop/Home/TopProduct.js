@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
-import { 
-    View, Text, StyleSheet, Dimensions
-} from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 
-//const url = 'http://localhost/api/images/product/';
+import sp1 from '../../../media/temp/sp1.jpeg';
+import sp2 from '../../../media/temp/sp2.jpeg';
+import sp3 from '../../../media/temp/sp3.jpeg';
+import sp4 from '../../../media/temp/sp4.jpeg';
 
 export default class TopProduct extends Component {
-    gotoDetail(product) {
-        const { navigate } = this.props.navigation;
-        navigate('ShopDetail', { product });
-    }
     render() {
         const { 
             container, titleContainer, title, 
-            //body, productContainer, productImage,
-            //produceName, producePrice 
+            body, productContainer, productImage,
+            produceName, producePrice 
         } = styles;
-        //const { topProducts } = this.props;
         return (
             <View style={container}>
                 <View style={titleContainer}>
                     <Text style={title}>TOP PRODUCT</Text>
+                </View>
+                <View style={body}>
+                    <View style={productContainer}>
+                        <Image source={sp1} style={productImage} />
+                        <Text style={produceName}>PRODUCT NAME</Text>
+                        <Text style={producePrice}>400$</Text>
+                    </View>
+                    <View style={productContainer}>
+                        <Image source={sp2} style={productImage} />
+                        <Text style={produceName}>PRODUCT NAME</Text>
+                        <Text style={producePrice}>250$</Text>
+                    </View>
+                    <View style={{ height: 10, width }} />
+                    <View style={productContainer}>
+                        <Image source={sp3} style={productImage} />
+                        <Text style={produceName}>PRODUCT NAME</Text>
+                        <Text style={producePrice}>400$</Text>
+                    </View>
+                    <View style={productContainer}>
+                        <Image source={sp4} style={productImage} />
+                        <Text style={produceName}>PRODUCT NAME</Text>
+                        <Text style={producePrice}>250$</Text>
+                    </View>
                 </View>
             </View>
         );
@@ -78,19 +97,3 @@ const styles = StyleSheet.create({
         color: '#662F90'
     }
 });
-
-
-// https://github.com/vanpho93/LiveCodeReactNative
-
-/* 
-    <View style={body}>
-        {this.props.topProducts.map(e => (
-                <TouchableOpacity style={productContainer}
-                 onPress={() => this.gotoDetail(e)} key={e.id}>
-                <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />
-                <Text style={produceName}>{e.name.toUpperCase()}</Text>
-                <Text style={producePrice}>{e.price}$</Text>
-            </TouchableOpacity>
-        ))}
-    </View>
-*/

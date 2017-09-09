@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import Collection from './Collection';
-import Category from './Category';
+import { ScrollView } from 'react-native';
+//import Collection from './Collection';
+//import Category from './Category';
+import TopProduct from './TopProduct';
 import Header from './Header';
 
 
@@ -14,11 +15,10 @@ class Home extends Component {
 
     render() {
         return (
-             <View style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
-                <Header onOpen={this.openMenu.bind(this)} />
-                <Collection />
-                <Category />
-            </View>
+             <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
+                 <Header onOpen={this.openMenu.bind(this)} />
+                 <TopProduct />
+             </ScrollView>
         );
     }
 }
@@ -26,6 +26,12 @@ class Home extends Component {
 export default Home;
 
 /*
+
+<ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
+                <Header onOpen={this.openMenu.bind(this)} />
+                <Collection />
+                <Category />
+</ScrollView>
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import Header from './Header';
