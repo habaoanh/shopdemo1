@@ -14,18 +14,20 @@ const { height } = Dimensions.get('window');
 export default class Header extends Component {
 
     render() {
+        const { wrapper, row1, textInput, iconStyle, titleStyle } = styles;
         return (
-            <View style={styles.wrapper}>
-                <View style={styles.row1}>
+            <View style={wrapper}>
+                <View style={row1}>
                     <TouchableOpacity onPress={this.props.onOpen}>
-                        <Image source={icMenu} style={styles.iconStyle} />
+                        <Image source={icMenu} style={iconStyle} />
                     </TouchableOpacity>
-                    <Text style={styles.titleStyle}>Wearing a Dress</Text>
-                    <Image source={icLogo} style={styles.iconStyle} />
+                    <Text style={titleStyle}>Wearing a Dress</Text>
+                    <Image source={icLogo} style={iconStyle} />
                 </View>
                 <TextInput
-                    style={styles.textInput}
-                    placeholder="what do you want to buy?"
+                    style={textInput}
+                    placeholder="What do you want to buy?"
+                    underlineColorAndroid="transparent"
                 />
 
             </View>
@@ -34,30 +36,19 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-
-    wrapper: {
-        justifyContent: 'space-around',
-        padding: 10,
-        height: height / 8,
-        backgroundColor: '#34B889'
+    wrapper: { 
+        height: height / 8, 
+        backgroundColor: '#34B089', 
+        padding: 10, 
+        justifyContent: 'space-around' 
     },
-    row1: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+    row1: { flexDirection: 'row', justifyContent: 'space-between' },
+    textInput: { 
+        height: height / 23, 
+        backgroundColor: '#FFF', 
+        paddingLeft: 10,
+        paddingVertical: 0 
     },
-    titleStyle: {
-        color: '#ffff',
-        fontFamily: 'Avenir',
-        fontSize: 20
-    },
-    textInput: {
-        height: height / 23,
-        backgroundColor: '#ffff',
-        paddingLeft: 10
-    },
-    iconStyle: {
-        width: 25,
-        height: 25
-    }
-
+    titleStyle: { color: '#FFF', fontFamily: 'Avenir', fontSize: 20 },
+    iconStyle: { width: 25, height: 25 }
 });
