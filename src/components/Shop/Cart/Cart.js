@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-export default class Cart extends Component {
-   
+class Cart extends Component {
+    gotoDetail() {
+        const { navigate } = this.props.navigation;
+        navigate('Manhinh_ProductDetail');
+    }
+    
     render() {
         return (
-            <View>
-                <Text>Day la man hinh Cart</Text>
-                
+            <View style={{ flex: 1, backgroundColor: '#D6D6D6' }}>
+                <Text>Cart Component</Text>
+                <TouchableOpacity onPress={this.gotoDetail.bind(this)}>
+                    <Text>Go to PRODUCT_DETAIL</Text>
+                </TouchableOpacity>
             </View>
         );
     }
 }
+
+export default Cart;
