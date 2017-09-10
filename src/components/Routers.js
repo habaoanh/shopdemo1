@@ -2,7 +2,8 @@ import React from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 import Cart from './Shop/Cart/Cart';
 import Home from './Shop/Home/Home';
-import ShopDetail from './Shop/Home/ShopDetail';
+import ProductDetail from './Shop/Home/ProductDetail';
+import ListProduct from './Shop/Home/ListProduct';
 import Contact from './Shop/Contact/Contact';
 import Gioithieu from './Shop/Contact/Gioithieu';
 import Search from './Shop/Search/Search';
@@ -14,24 +15,30 @@ import OrderHistory from './Shop/OrderHistory/OrderHistory';
 
 export const HomeStack = StackNavigator({
 	Manhinh_Home: {
-
 		screen: Home,
-
 		navigationOptions:
-
 		{
 			header: null,
 			title: 'Wearing a Dress'
 		}
 	},
+	
+	Manhinh_ListProduct: {
+		screen: ListProduct,
+		navigationOptions: {
+			title: 'cac loai San Pham',
+			header: null,
+		}
+	},
 
-	Manhinh_ShopDetail: {
-		screen: ShopDetail,
+	Manhinh_ProductDetail: {
+		screen: ProductDetail,
 		navigationOptions: {
 			title: 'Shop Chi Tiết',
 			header: null,
 		}
 	}
+
 });
 
 export const CartStack = StackNavigator({
@@ -99,8 +106,6 @@ export const Tabs = TabNavigator({
 			},
 			inactiveTintColor: 'green',
 			activeTintColor: 'red'
-
-
 		}
 	});
 

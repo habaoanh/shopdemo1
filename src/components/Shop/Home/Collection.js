@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import bannerImage from '../../../media/temp/banner.jpg';
 
 const { width } = Dimensions.get('window');
@@ -11,11 +11,11 @@ export default class Collection extends Component {
                 <View style={{ height: 50, justifyContent: 'center' }} >
                     <Text style={styles.textStyle} >SPRING COLLECTION</Text>
                 </View>
-                <View style={{ flex: 4, justifyContent: 'flex-end' }} >
-                <Image source={bannerImage} style={styles.imageStyle} />
-                    
-                </View>
+                <TouchableOpacity style={{ flex: 4, justifyContent: 'flex-end' }} >
+                <Image source={bannerImage} style={styles.imageStyle} />    
+                </TouchableOpacity>
             </View>
+
         );
     }
 }

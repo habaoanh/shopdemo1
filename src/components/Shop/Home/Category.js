@@ -1,6 +1,6 @@
 //chua lam chu duoc Swiper, tinh nang van co nhung chua ra hinh
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 
 import littleIcon from '../../../media/temp/little.jpg';
@@ -10,6 +10,7 @@ import partyIcon from '../../../media/temp/party.jpg';
 const { width } = Dimensions.get('window');
 
 export default class Category extends Component {
+    
     render() {
         const { wrapper, textStyle, imageStyle, cateTitle } = styles;
         return (
@@ -19,15 +20,21 @@ export default class Category extends Component {
                 </View>
                 <View style={{ justifyContent: 'flex-end', flex: 4 }}>
                     <Swiper showsPagination width={imageWidth} height={imageHeight} >
-                        <Image source={littleIcon} style={imageStyle}>
-                            <Text style={cateTitle}>Maxi Dress</Text>
-                        </Image>
-                        <Image source={maxiIcon} style={imageStyle}>
-                            <Text style={cateTitle}>Maxi Dress</Text>
-                        </Image>
-                        <Image source={partyIcon} style={imageStyle}>
-                            <Text style={cateTitle}>Maxi Dress</Text>
-                        </Image>
+                        <TouchableOpacity onPress={this.props.onOpen}>
+                            <Image source={littleIcon} style={imageStyle}>
+                                <Text style={cateTitle}>Maxi Dress</Text>
+                            </Image>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.onOpen}>
+                            <Image source={maxiIcon} style={imageStyle}>
+                                <Text style={cateTitle}>Maxi Dress</Text>
+                            </Image>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.onOpen}>
+                            <Image source={partyIcon} style={imageStyle}>
+                                <Text style={cateTitle}>Maxi Dress</Text>
+                            </Image>
+                        </TouchableOpacity>
                     </Swiper>
                 </View>
             </View>

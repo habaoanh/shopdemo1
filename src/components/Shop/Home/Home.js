@@ -13,13 +13,23 @@ class Home extends Component {
         navigate('DrawerOpen');
     }
 
+    gotoDetail() {
+        const { navigate } = this.props.navigation;
+        navigate('Manhinh_ProductDetail');
+    }
+
+    gotoListProduct() {
+       const { navigate } = this.props.navigation;
+        navigate('Manhinh_ListProduct');
+    }
+
     render() {
         return (
              <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
                  <Header onOpen={this.openMenu.bind(this)} />
                  <Collection />
-                 <Category />
-                 <TopProduct />
+                 <Category onOpen={this.gotoListProduct.bind(this)} />
+                 <TopProduct onOpen={this.gotoDetail.bind(this)} />
              </ScrollView>
         );
     }
