@@ -19,7 +19,7 @@ export default class Category extends Component {
                     <Text style={textStyle} >LIST OF CATEGORY</Text>
                 </View>
                 <View style={{ justifyContent: 'flex-end', flex: 4 }}>
-                    <Swiper showsPagination width={imageWidth} height={imageHeight} >
+                    <Swiper width={imageWidth} height={imageHeight} >
                         <TouchableOpacity onPress={this.props.onOpen}>
                             <Image source={littleIcon} style={imageStyle}>
                                 <Text style={cateTitle}>Maxi Dress</Text>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         color: '#AFAEAF'
     },
     imageStyle: {
-        height: imageHeight, 
+        height: imageHeight,
         width: imageWidth,
         justifyContent: 'center',
         alignItems: 'center'

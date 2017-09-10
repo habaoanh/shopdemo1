@@ -6,13 +6,14 @@ const { width } = Dimensions.get('window');
 export default class Collection extends Component {
 
     render() {
+        const { wrapper, textStyle, imageStyle } = styles;
         return (
-            <View style={styles.wrapper}>
+            <View style={wrapper}>
                 <View style={{ height: 50, justifyContent: 'center' }} >
-                    <Text style={styles.textStyle} >SPRING COLLECTION</Text>
+                    <Text style={textStyle} >SPRING COLLECTION</Text>
                 </View>
                 <TouchableOpacity style={{ flex: 4, justifyContent: 'flex-end' }} >
-                <Image source={bannerImage} style={styles.imageStyle} />    
+                <Image source={bannerImage} style={imageStyle} />    
                 </TouchableOpacity>
             </View>
 
@@ -20,25 +21,27 @@ export default class Collection extends Component {
     }
 }
 
-//933 x 465
-const imageWidth = width - 20;
+    //933 x 465
+const imageWidth = width - 40;
 const imageHeight = (imageWidth / 933) * 465;
+
 const styles = StyleSheet.create({
     wrapper: {
         width: width - 20,
-        backgroundColor: '#ffff',
-        marginTop: 7,
+        backgroundColor: '#FFF',
+        margin: 10,
         shadowColor: '#2E272B',
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
-        padding: 10
+        padding: 10,
+        paddingTop: 0
     },
     textStyle: {
         fontSize: 20,
         color: '#AFAEAF'
     },
     imageStyle: {
-        height: imageHeight,
+        height: imageHeight, 
         width: imageWidth
     }
 });
