@@ -4,12 +4,8 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-//import littleIcon from '../../../media/temp/little.jpg';
-//import maxiIcon from '../../../media/temp/maxi.jpg';
-//import partyIcon from '../../../media/temp/party.jpg';
-
 const { width } = Dimensions.get('window');
-//const url = 'http://localhost/api/images/type/';
+const url = 'http://192.168.131.2/api/images/type/';
 
 export default class Category extends Component {
 
@@ -25,7 +21,7 @@ export default class Category extends Component {
                     <Swiper showsPagination showsButtons width={imageWidth} height={imageHeight} >
                         {types.map(e => (
                             <TouchableOpacity onPress={this.props.onOpen} key={e.id}>
-                                <Image source={{ uri: `http://192.168.131.2/api/images/type/${e.image}` }} style={imageStyle}>
+                                <Image source={{ uri: `${url}${e.image}` }} style={imageStyle}>
                                     <Text style={cateTitle}>{e.name}</Text>
                                 </Image>
                             </TouchableOpacity>

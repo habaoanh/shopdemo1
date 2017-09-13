@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import {
+    View, Text, Image, StyleSheet, Dimensions, TouchableOpacity
+} from 'react-native';
 
-import sp1 from '../../../media/temp/sp1.jpeg';
-import sp2 from '../../../media/temp/sp2.jpeg';
-import sp3 from '../../../media/temp/sp3.jpeg';
-import sp4 from '../../../media/temp/sp4.jpeg';
+const url = 'http://192.168.131.2/api/images/product/';
 
 export default class TopProduct extends Component {
-    
+
     render() {
         const {
             container, titleContainer, title,
@@ -20,27 +19,17 @@ export default class TopProduct extends Component {
                     <Text style={title}>TOP PRODUCT</Text>
                 </View>
                 <View style={body}>
-                    <TouchableOpacity style={productContainer} onPress={this.props.onOpen}>
-                        <Image source={sp1} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>400$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} onPress={this.props.onOpen}>
-                        <Image source={sp2} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>250$</Text>
-                    </TouchableOpacity>
-                    <View style={{ height: 10, width }} />
-                    <TouchableOpacity style={productContainer} onPress={this.props.onOpen}>
-                        <Image source={sp3} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>400$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} onPress={this.props.onOpen}>
-                        <Image source={sp4} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>250$</Text>
-                    </TouchableOpacity>
+                    {this.props.topProducts.map(e => (
+                        <TouchableOpacity 
+                        style={productContainer} 
+                        onPress={this.props.onOpen}
+                        key={e.id}
+                        >
+                            <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />
+                            <Text style={produceName}>PRODUCT NAME</Text>
+                            <Text style={producePrice}>250$</Text>
+                        </TouchableOpacity>
+                    ))}
                 </View>
             </View>
         );

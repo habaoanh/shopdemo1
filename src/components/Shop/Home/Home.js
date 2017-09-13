@@ -10,7 +10,8 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            types: [] 
+            types: [],
+            topProducts: [] 
         };
     }
 
@@ -18,8 +19,8 @@ class Home extends Component {
         fetch('http://192.168.131.2/api/')// eslint-disable-line
         .then(res => res.json())
         .then(resJSON => {
-            const { type } = resJSON;
-            this.setState({ types: type });
+            const { type, product } = resJSON;
+            this.setState({ types: type, topProducts: product });
         });
     }
     
@@ -39,13 +40,13 @@ class Home extends Component {
     }
 
     render() {
-        const { types } = this.state;
+        const { types, topProducts } = this.state;
         return (
              <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
                  <Header onOpen={this.openMenu.bind(this)} />
                  <Collection />
                  <Category onOpen={this.gotoListProduct.bind(this)} types={types} />
-                 <TopProduct onOpen={this.gotoDetail.bind(this)} />
+                 <TopProduct onOpen={this.gotoDetail.bind(this)} topProducts={topProducts} />
              </ScrollView>
              
         );
