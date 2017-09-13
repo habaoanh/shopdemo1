@@ -7,6 +7,21 @@ import Header from './Header';
 
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            types: [] 
+        };
+    }
+
+    componentDidMount() {
+        fetch('http://192.168.131.2/api/')// eslint-disable-line
+        .then(res => res.json())
+        .then(resJSON => {
+            const { type } = resJSON;
+            this.setState({ types: type });
+        });
+    }
     
     openMenu() {
         const { navigate } = this.props.navigation;
@@ -24,13 +39,15 @@ class Home extends Component {
     }
 
     render() {
+        const { types } = this.state;
         return (
              <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
                  <Header onOpen={this.openMenu.bind(this)} />
                  <Collection />
-                 <Category onOpen={this.gotoListProduct.bind(this)} />
+                 <Category onOpen={this.gotoListProduct.bind(this)} types={types} />
                  <TopProduct onOpen={this.gotoDetail.bind(this)} />
              </ScrollView>
+             
         );
     }
 }
