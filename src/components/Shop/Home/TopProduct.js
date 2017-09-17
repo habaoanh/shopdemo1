@@ -4,7 +4,8 @@ import {
 } from 'react-native';
 
 const url = 'http://192.168.0.103/api/images/product/';
-
+//top product da co hinh do duoi file image khong khop giua hinh anh va duoi file load tu api
+//chep hinh anh tu image vao ...htdocs\api\images\product
 export default class TopProduct extends Component {
 gotoDetail(product) {
         const { navigation } = this.props;
