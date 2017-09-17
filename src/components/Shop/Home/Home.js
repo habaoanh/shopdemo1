@@ -16,7 +16,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('http://192.168.131.2/api/')// eslint-disable-line
+        fetch('http:192.168.0.103/api/')// eslint-disable-line
         .then(res => res.json())
         .then(resJSON => {
             const { type, product } = resJSON;

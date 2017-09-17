@@ -3,7 +3,7 @@ import {
     View, Text, Image, StyleSheet, Dimensions, TouchableOpacity
 } from 'react-native';
 
-const url = 'http://192.168.131.2/api/images/product/';
+const url = 'http://192.168.0.103/api/images/product/';
 
 export default class TopProduct extends Component {
 gotoDetail(product) {
