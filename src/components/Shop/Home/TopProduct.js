@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
-    View, Text, Image, StyleSheet, Dimensions, TouchableOpacity
+    View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, FlatList
 } from 'react-native';
 
 const url = 'http://192.168.0.103/api/images/product/';
 //top product da co hinh do duoi file image khong khop giua hinh anh va duoi file load tu api
 //chep hinh anh tu image vao ...htdocs\api\images\product
 export default class TopProduct extends Component {
-gotoDetail(product) {
+    gotoDetail(product) {
         const { navigation } = this.props;
         navigation.navigate('Manhinh_ProductDetail', { product });
     }
@@ -18,24 +18,36 @@ gotoDetail(product) {
             body, productContainer, productImage,
             produceName, producePrice
         } = styles;
+        
         return (
             <View style={container}>
                 <View style={titleContainer}>
                     <Text style={title}>TOP PRODUCT</Text>
                 </View>
-                <View style={body}>
-                    {this.props.topProducts.map(e => (
+                
+                <FlatList
+                    horizontal={false}
+                    numColumns={2}
+                    contentContainerStyle={body}
+                    data={this.props.topProducts}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
                         <TouchableOpacity 
-                        style={productContainer} 
-                        onPress={() => this.gotoDetail(e)}
-                        key={e.id}
+                        style={productContainer} onPress={() => this.gotoDetail(item)}
                         >
-                            <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />
-                            <Text style={produceName}>{e.name.toUpperCase()}</Text>
-                            <Text style={producePrice}>{e.price}$</Text>
+                            <Image 
+                            source={{ uri: `${url}${item.images[0]}` }} style={productImage} 
+                            />
+                            <Text style={produceName}>{item.name.toUpperCase()}</Text>
+                            <Text style={producePrice}>{item.price}$</Text>
                         </TouchableOpacity>
-                    ))}
-                </View>
+                    )}
+                    ItemSeparatorComponent={(sectionId, rowId) => {
+                        if (rowId % 2 === 1) return <View style={{ width, height: 10 }} />;
+                        return null;
+                    }}
+                />
+                
             </View>
         );
     }
@@ -62,17 +74,17 @@ const styles = StyleSheet.create({
         color: '#D3D3CF',
         fontSize: 20
     },
-    body: {
-        flexDirection: 'row',
+    body: {   
         justifyContent: 'space-around',
-        flexWrap: 'wrap',
-        paddingBottom: 10
+        //padding: 10
     },
     productContainer: {
         width: produtWidth,
         shadowColor: '#2E272B',
         shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2
+        shadowOpacity: 0.2,
+        paddingLeft: 10,
+        paddingRight: 10
     },
     productImage: {
         width: produtWidth,
@@ -92,3 +104,17 @@ const styles = StyleSheet.create({
         color: '#662F90'
     }
 });
+/*<View style={body}>
+                    {this.props.topProducts.map(e => (
+                        <TouchableOpacity 
+                        style={productContainer} 
+                        onPress={() => this.gotoDetail(e)}
+                        key={e.id}
+                        >
+                            <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />
+                            <Text style={produceName}>{e.name.toUpperCase()}</Text>
+                            <Text style={producePrice}>{e.price}$</Text>
+                        </TouchableOpacity>
+                    ))}
+                </View> 
+*/
