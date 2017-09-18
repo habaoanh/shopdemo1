@@ -1,7 +1,7 @@
 const sendOrder = (token, arrayDetail) => {
     const data = { token, arrayDetail };
     console.log(data);
-    return fetch('http:192.168.0.103/api/cart.php',// eslint-disable-line
+    return fetch('http:192.168.0.104/api/cart.php',// eslint-disable-line
     {   
         method: 'POST',
         headers: {

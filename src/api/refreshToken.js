@@ -2,7 +2,7 @@ import saveToken from './saveToken';
 import getToken from './getToken';
 
 const getNewToken = (token) => (
-    fetch('http:192.168.0.103/api/refresh_token.php',// eslint-disable-line
+    fetch('http:192.168.0.104/api/refresh_token.php',// eslint-disable-line
     {   
         method: 'POST',
         headers: {

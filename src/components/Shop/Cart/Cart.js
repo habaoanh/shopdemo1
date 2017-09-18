@@ -11,7 +11,7 @@ function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-const url = 'http:192.168.0.103/api/images/product/';
+const url = 'http:192.168.0.104/api/images/product/';
 
 class CartView extends Component {
     constructor(props) {
@@ -19,6 +19,7 @@ class CartView extends Component {
         this.state = { 
             cartArray: []
         };
+        global.addProductToCart = this.addProductToCart.bind(this);
         global.addProductToCart = this.addProductToCart.bind(this);
     }
     componentDidMount() {
@@ -29,6 +30,10 @@ class CartView extends Component {
         this.setState({ cartArray: this.state.cartArray.concat({ product, quanlity: 1 }) },
         () => saveCart(this.state.cartArray)
     );
+    }
+
+    incrQuatity(id) {
+        global.incrQuantity(id);
     }
 
     gotoDetail() {
@@ -69,7 +74,9 @@ class CartView extends Component {
                                 </View>
                                 <View style={productController}>
                                     <View style={numberOfProduct}>
-                                        <TouchableOpacity>
+                                        <TouchableOpacity 
+                                        onPress={() => this.incrQuatity(item.product.id)}
+                                        >
                                             <Text>+</Text>
                                         </TouchableOpacity>
                                         <Text>{item.quantity}</Text>
