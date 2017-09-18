@@ -4,6 +4,7 @@ import Collection from './Collection';
 import Category from './Category';
 import TopProduct from './TopProduct';
 import Header from './Header';
+import initData from '../../../api/initData';
 
 
 class Home extends Component {
@@ -16,8 +17,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('http:192.168.0.103/api/')// eslint-disable-line
-        .then(res => res.json())
+        initData()
         .then(resJSON => {
             const { type, product } = resJSON;
             this.setState({ types: type, topProducts: product });

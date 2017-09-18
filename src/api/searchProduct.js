@@ -1,6 +1,6 @@
 const searchProduct = (key) => {
-    const url = `http://10.0.0.13/api/search.php?key=${key}`;
-    return fetch(url)
+    const url = `http:192.168.0.103/api/search.php?key=${key}`;
+    return fetch(url)// eslint-disable-line
     .then(res => res.json());
 };
 

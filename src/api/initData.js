@@ -1,5 +1,5 @@
 const initData = () => (
-    fetch('http://10.0.0.13/api/')// eslint-disable-line
+    fetch('http:192.168.0.103/api/')// eslint-disable-line
     .then(res => res.json())
 );
 

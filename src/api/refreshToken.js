@@ -2,7 +2,7 @@ import saveToken from './saveToken';
 import getToken from './getToken';
 
 const getNewToken = (token) => (
-    fetch('http://10.0.0.13/api/refresh_token.php',
+    fetch('http:192.168.0.103/api/refresh_token.php',// eslint-disable-line
     {   
         method: 'POST',
         headers: {
@@ -22,7 +22,7 @@ const refreshToken = async () => {
         }
         const newToken = await getNewToken(token);
         await saveToken(newToken);
-        console.log('TOKEN MOI: ' + newToken);
+        console.log(`TOKEN MOI: ${newToken}`);
     } catch (e) {
         console.log(e);
     }
