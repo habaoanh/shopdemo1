@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Collection from './Collection';
 import Category from './Category';
 import TopProduct from './TopProduct';
 import Header from './Header';
 import initData from '../../../api/initData';
-
+import getCart from '../../../api/getCart';
+import saveCart from '../../../api/saveCart';
 
 class Home extends Component {
     constructor(props) {
@@ -13,7 +14,9 @@ class Home extends Component {
         this.state = { 
             types: [],
             topProducts: [],
+            cartArray: []
         };
+        global.addProductToCart = this.addProductToCart.bind(this);
     }
 
     componentDidMount() {
@@ -22,18 +25,27 @@ class Home extends Component {
             const { type, product } = resJSON;
             this.setState({ types: type, topProducts: product });
         });
+        getCart()
+        .then(cartArray => this.setState({ cartArray }));
     }
-
+    addProductToCart(product) {
+        this.setState({ cartArray: this.state.cartArray.concat({ product, quanlity: 1 }) },
+        () => saveCart(this.state.cartArray)
+        );
+    }
     render() {
         const { types, topProducts } = this.state;
-        return (
+        
+        return (  
+            <View>  
              <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
                  <Header navigation={this.props.navigation} />
                  <Collection />
                  <Category navigation={this.props.navigation} types={types} />
                  <TopProduct navigation={this.props.navigation} topProducts={topProducts} />
              </ScrollView>
-             
+             </View>  
+            
         );
     }
 }

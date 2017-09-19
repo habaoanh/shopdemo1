@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 import Cart from './Shop/Cart/Cart';
 import Home from './Shop/Home/Home';
@@ -130,3 +130,13 @@ export const SideMenu = DrawerNavigator({
 		contentComponent: props => <Menu {...props} />
 	}
 );
+
+class Routers extends Component {
+	
+	render() {
+		return (
+		<Tabs screenProps={{ cartArray: this.state.cartArray }} />
+		);
+	}
+}
+export default Routers;

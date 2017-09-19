@@ -4,8 +4,6 @@ import {
     Dimensions, StyleSheet, Image
 } from 'react-native';
 import global from '../global';
-import saveCart from '../../../api/saveCart';
-import getCart from '../../../api/getCart';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -14,23 +12,6 @@ function toTitleCase(str) {
 const url = 'http:192.168.0.104/api/images/product/';
 
 class CartView extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            cartArray: []
-        };
-        global.addProductToCart = this.addProductToCart.bind(this);
-        global.addProductToCart = this.addProductToCart.bind(this);
-    }
-    componentDidMount() {
-        getCart()
-        .then(cartArray => this.setState({ cartArray }));
-    }
-    addProductToCart(product) {
-        this.setState({ cartArray: this.state.cartArray.concat({ product, quanlity: 1 }) },
-        () => saveCart(this.state.cartArray)
-    );
-    }
 
     incrQuatity(id) {
         global.incrQuantity(id);
@@ -45,12 +26,11 @@ class CartView extends Component {
             productStyle, mainRight, productController,
             txtName, txtPrice, productImage, numberOfProduct,
             txtShowDetail, showDetailContainer } = styles;
-        const { cartArray } = this.state;
         return (
             <View style={wrapper}>
                 <FlatList
                 contentContainerStyle={main}
-                    data={cartArray}
+                    data={this.props.screenProps.cartArray}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
                         <View style={productStyle}>
